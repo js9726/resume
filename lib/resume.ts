@@ -6,7 +6,7 @@ export const PROFILE = {
   name: "Jie Sheng",
   title: "Full-Stack & AI Engineer",
   location: "Malaysia",
-  email: "jieshengooi2697@gmail.com",
+  email: "jiesheng2697@gmail.com",
   github: "https://github.com/js9726",
   summary:
     "Full-stack and AI engineer who ships production web apps end-to-end — from Python data pipelines and BigQuery warehouses to Next.js front-ends on Vercel and Google Cloud Run. I specialise in LLM and agent systems: multi-agent orchestration, retrieval-grounded analysis, MCP tooling, and live data integrations. Comfortable owning the full lifecycle — ingestion, APIs, auth, CI/CD and deployment.",
@@ -85,26 +85,25 @@ export const PROJECTS: Project[] = [
       "Integrated live brokerage feeds (moomoo OpenD + IBKR bridges) with a fail-closed freshness guard that halts analysis on stale or missing data.",
       "Implemented NextAuth v5 (Google OAuth) + Prisma + PostgreSQL with role-based access and middleware route protection.",
     ],
-    links: [
-      { label: "Live (private beta)", href: "https://market-dashboard-ivory.vercel.app" },
-    ],
+    note: "Private beta — live walkthrough available on request.",
+    links: [],
   },
   {
-    name: "Walplus Operations Dashboard — Multi-Channel E-Commerce Analytics",
+    name: "Multi-Channel E-Commerce Operations Dashboard",
     role: "Client work (under NDA) · 2025–2026",
-    stack: ["React", "Express", "Google Cloud Run", "BigQuery", "Linnworks"],
+    stack: ["React", "Express", "Google Cloud Run", "BigQuery"],
     tags: ["Data", "E-commerce", "Cloud Run"],
     blurb:
       "Internal operations dashboard aggregating multi-channel sales, gross-profit and replenishment analytics.",
     highlights: [
-      "Aggregates marketplace, FBA and dropship channels into a BigQuery warehouse with automated daily Linnworks ingestion.",
+      "Aggregates marketplace, FBA and dropship channels into a BigQuery warehouse with automated daily ingestion from the order-management system.",
       "Surfaces channel revenue, gross-profit modelling, AI performance insights and FBA replenishment recommendations.",
       "Roadmap features: Amazon SP-API listing optimisation and live Buy-Box pricing checks.",
       "Containerised React + Express app deployed on Google Cloud Run.",
     ],
     note: "Production data is NDA-protected — the linked demo runs entirely on synthetic data.",
     links: [
-      { label: "Live demo (synthetic data)", href: "https://walplus-demo.vercel.app" },
+      { label: "Live demo (synthetic data)", href: "https://ecommerce-ops-demo.vercel.app" },
     ],
   },
   {
