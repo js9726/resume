@@ -43,6 +43,21 @@ body {
   gap: 20px;
   flex-wrap: wrap;
 }
+.id {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.avatar {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--line);
+  flex: 0 0 auto;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
 .name {
   font-size: 30px;
   font-weight: 800;

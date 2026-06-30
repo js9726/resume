@@ -10,15 +10,19 @@ export default function Page() {
   return (
     <main className="sheet">
       <header className="top">
-        <div>
-          <h1 className="name">{PROFILE.name}</h1>
-          <p className="role">{PROFILE.title}</p>
-          <div className="contact">
+        <div className="id">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="avatar" src={PROFILE.avatar} alt={PROFILE.name} />
+          <div>
+            <h1 className="name">{PROFILE.name}</h1>
+            <p className="role">{PROFILE.title}</p>
+            <div className="contact">
             <a href={`mailto:${PROFILE.email}`}>{PROFILE.email}</a>
             <a href={PROFILE.github} target="_blank" rel="noreferrer">
               github.com/{PROFILE.github.split("/").pop()}
             </a>
             <span>{PROFILE.location}</span>
+            </div>
           </div>
         </div>
         <PrintButton />

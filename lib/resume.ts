@@ -5,6 +5,7 @@
 export const PROFILE = {
   name: "Jie Sheng",
   title: "Full-Stack & AI Engineer",
+  avatar: "/headshot.png",
   location: "Malaysia",
   email: "jiesheng2697@gmail.com",
   github: "https://github.com/js9726",
