@@ -2,7 +2,7 @@
 
 A small Next.js site presenting my resume and selected projects. Deployed on Vercel.
 
-**Live:** _(set after first deploy)_
+**Live:** https://resume-delta-ashen.vercel.app
 
 ## Editing
 
