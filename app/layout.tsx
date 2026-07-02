@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Jie Sheng — Full-Stack & AI Engineer",
   description:
     "Resume and project portfolio of Jie Sheng, a full-stack and AI engineer building production web apps and LLM/agent systems.",
+  icons: {
+    icon: "/headshot.png",
+  },
 };
 
 export default function RootLayout({

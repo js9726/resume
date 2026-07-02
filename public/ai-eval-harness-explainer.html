@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Trading Brief Eval Harness Explained</title>
+    <meta
+      name="description"
+      content="Plain-English and professional explanation of the Neon-backed trading brief eval harness in the AI Market Dashboard."
+    />
+    <link rel="icon" href="/headshot.png" />
+    <style>
+      :root {
+        --ink: #111827;
+        --muted: #526173;
+        --line: #dfe5ee;
+        --paper: #ffffff;
+        --bg: #f5f7fb;
+        --teal: #0f766e;
+        --blue: #2563eb;
+        --green: #15803d;
+        --amber: #b45309;
+        --soft-teal: #e6f5f3;
+        --soft-blue: #e8f0ff;
+        --soft-green: #e9f8ee;
+        --soft-amber: #fff3dd;
+        --code: #172033;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--bg);
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, Arial, sans-serif;
+        line-height: 1.58;
+      }
+
+      .shell {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 32px 20px 56px;
+      }
+
+      header {
+        display: grid;
+        grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.8fr);
+        gap: 28px;
+        align-items: start;
+        padding: 28px 0 22px;
+      }
+
+      .eyebrow {
+        margin: 0 0 12px;
+        color: var(--teal);
+        font-size: 13px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      h1 {
+        margin: 0;
+        max-width: 13ch;
+        font-size: clamp(40px, 7vw, 76px);
+        line-height: 0.98;
+        letter-spacing: 0;
+      }
+
+      .lead {
+        max-width: 66ch;
+        margin: 22px 0 0;
+        color: #263244;
+        font-size: 18px;
+      }
+
+      .fact-panel,
+      section {
+        border: 1px solid var(--line);
+        background: var(--paper);
+        border-radius: 8px;
+        box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+      }
+
+      .fact-panel {
+        padding: 18px;
+      }
+
+      section {
+        margin-top: 22px;
+        padding: 22px;
+      }
+
+      h2 {
+        margin: 0 0 12px;
+        font-size: 22px;
+        letter-spacing: 0;
+      }
+
+      h3 {
+        margin: 0 0 6px;
+        font-size: 16px;
+      }
+
+      p {
+        margin: 0 0 12px;
+      }
+
+      a {
+        color: var(--blue);
+      }
+
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 16px 0 0;
+      }
+
+      nav a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 36px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 6px 10px;
+        color: var(--ink);
+        background: var(--paper);
+        font-size: 13px;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .fact-list {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .fact-list li {
+        display: grid;
+        grid-template-columns: 90px minmax(0, 1fr);
+        gap: 10px;
+        font-size: 14px;
+      }
+
+      .fact-list strong {
+        color: var(--muted);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .stack-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .item {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 14px;
+        background: #fbfcff;
+      }
+
+      .item p {
+        margin: 0;
+        color: #344256;
+        font-size: 14px;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        min-height: 26px;
+        margin: 0 6px 8px 0;
+        border-radius: 999px;
+        padding: 3px 10px;
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .pill.teal {
+        background: var(--soft-teal);
+        color: var(--teal);
+      }
+
+      .pill.blue {
+        background: var(--soft-blue);
+        color: var(--blue);
+      }
+
+      .pill.green {
+        background: var(--soft-green);
+        color: var(--green);
+      }
+
+      .pill.amber {
+        background: var(--soft-amber);
+        color: var(--amber);
+      }
+
+      .diagram {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .node {
+        min-height: 116px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 12px;
+        background: #fbfcff;
+      }
+
+      .node .num {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        margin-bottom: 8px;
+        border-radius: 50%;
+        color: #fff;
+        background: var(--teal);
+        font-size: 13px;
+        font-weight: 900;
+      }
+
+      .node strong {
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .node span {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .loop {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .loop-step {
+        position: relative;
+        min-height: 132px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 14px;
+        background: #fbfcff;
+      }
+
+      .loop-step::after {
+        content: "->";
+        position: absolute;
+        right: -12px;
+        top: 50%;
+        color: var(--muted);
+        font-weight: 900;
+        transform: translateY(-50%);
+      }
+
+      .loop-step:last-child::after {
+        content: "";
+      }
+
+      .loop-step strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--teal);
+      }
+
+      pre {
+        overflow-x: auto;
+        margin: 12px 0 0;
+        border-radius: 8px;
+        background: var(--code);
+        color: #edf3ff;
+        padding: 14px;
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 12px;
+        font-size: 14px;
+      }
+
+      th,
+      td {
+        border-top: 1px solid var(--line);
+        padding: 10px 8px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        color: var(--muted);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      .callout {
+        margin-top: 14px;
+        border-left: 4px solid var(--teal);
+        background: var(--soft-teal);
+        border-radius: 8px;
+        padding: 12px 14px;
+        color: #133d3a;
+      }
+
+      .footer {
+        margin-top: 20px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      @media (max-width: 860px) {
+        header,
+        .grid,
+        .stack-grid,
+        .diagram,
+        .loop {
+          grid-template-columns: 1fr;
+        }
+
+        h1 {
+          max-width: 100%;
+        }
+
+        .loop-step::after {
+          content: "";
+        }
+      }
+
+      @media print {
+        body {
+          background: #fff;
+        }
+
+        .shell {
+          max-width: none;
+          padding: 0;
+        }
+
+        section,
+        .fact-panel {
+          break-inside: avoid;
+          box-shadow: none;
+        }
+
+        nav {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <header>
+        <div>
+          <p class="eyebrow">AI Market Dashboard project evidence</p>
+          <h1>Trading Brief Eval Harness</h1>
+          <p class="lead">
+            This page explains the Neon-backed evaluation harness that checks
+            whether an AI trading brief follows the right trading rules before
+            the result is trusted. It is written twice: once like you are 12,
+            and once like a technical reviewer is reading your portfolio.
+          </p>
+          <nav aria-label="Page sections">
+            <a href="#eli12">Like I am 12</a>
+            <a href="#professional">Professional view</a>
+            <a href="#stack">Tech stack</a>
+            <a href="#mjs">What is .mjs?</a>
+            <a href="#line-by-line">Line by line</a>
+            <a href="#validation">Validation</a>
+          </nav>
+        </div>
+
+        <aside class="fact-panel" aria-label="Quick facts">
+          <h2>Quick Facts</h2>
+          <ul class="fact-list">
+            <li><strong>Goal</strong><span>Catch bad AI trading judgments before they ship.</span></li>
+            <li><strong>Data</strong><span>Real Neon Postgres A-list rows from the dashboard.</span></li>
+            <li><strong>Gate</strong><span>Pass when aggregate eval score is at least 80%.</span></li>
+            <li><strong>Result</strong><span>24 Neon rows exported and scored at 100% in local validation.</span></li>
+          </ul>
+        </aside>
+      </header>
+
+      <section id="eli12">
+        <h2>Explain It Like I Am 12</h2>
+        <div class="grid">
+          <div class="item">
+            <h3>The problem</h3>
+            <p>An AI can sound confident even when it is wrong. In trading, a wrong "GO" or a missed risk flag can teach the wrong lesson.</p>
+          </div>
+          <div class="item">
+            <h3>The simple idea</h3>
+            <p>We give the AI a quiz. Each question is a trading setup. The answer must say GO, WATCH, or PASS, plus the right score and risk words.</p>
+          </div>
+          <div class="item">
+            <h3>What Neon does</h3>
+            <p>Neon is the online database. It already stores real dashboard picks, so the quiz can use real examples instead of fake ones.</p>
+          </div>
+          <div class="item">
+            <h3>What the harness does</h3>
+            <p>The harness checks the answer. If the score is too low, the build should fail, like a school test that needs a passing mark.</p>
+          </div>
+        </div>
+        <div class="callout">
+          Easy mental model: this is a spell-checker for AI trading judgment.
+          It does not trade. It checks whether the AI explanation follows the
+          rules you already decided.
+        </div>
+      </section>
+
+      <section id="professional">
+        <h2>Professional Explanation</h2>
+        <p>
+          The trading brief eval harness is a deterministic quality gate for
+          LLM-assisted trading analysis. It converts real `AListCandidate` rows
+          from Neon Postgres into eval cases and candidate result files, then
+          scores verdict accuracy, Conviction Score range, setup
+          classification, risk flags, forbidden failure modes, and rationale
+          coverage.
+        </p>
+        <p>
+          The point is not to predict market outcomes. The point is to prevent
+          regressions in the reasoning contract: a pullback should not be failed
+          only because RVOL is low, a breakout should require volume expansion,
+          and a parabolic chase should not be promoted as a clean GO.
+        </p>
+        <div class="diagram" aria-label="Eval pipeline">
+          <div class="node"><span class="num">1</span><strong>Neon</strong><span>Stores real dashboard A-list candidates.</span></div>
+          <div class="node"><span class="num">2</span><strong>Exporter</strong><span>Reads rows through Prisma and writes local JSON.</span></div>
+          <div class="node"><span class="num">3</span><strong>Golden Set</strong><span>Defines expected verdict, tags, flags, and phrases.</span></div>
+          <div class="node"><span class="num">4</span><strong>Eval Runner</strong><span>Scores candidate outputs against the expected contract.</span></div>
+          <div class="node"><span class="num">5</span><strong>Gate</strong><span>Fails if aggregate score drops below the threshold.</span></div>
+        </div>
+      </section>
+
+      <section id="stack">
+        <h2>Tech Stack Used</h2>
+        <div class="stack-grid">
+          <div class="item"><span class="pill teal">Data</span><h3>Neon Postgres</h3><p>Serverless PostgreSQL database that stores the dashboard's real A-list trading rows.</p></div>
+          <div class="item"><span class="pill blue">ORM</span><h3>Prisma</h3><p>Typed database client used by the Node script to query `AListCandidate` safely.</p></div>
+          <div class="item"><span class="pill green">Runtime</span><h3>Node.js</h3><p>Runs the command-line scripts that export eval data and score it.</p></div>
+          <div class="item"><span class="pill amber">Script format</span><h3>MJS</h3><p>JavaScript module files used for Node automation scripts with modern `import` syntax.</p></div>
+          <div class="item"><span class="pill teal">Fixtures</span><h3>JSON</h3><p>Portable files for eval cases and results. Easy for humans and scripts to inspect.</p></div>
+          <div class="item"><span class="pill blue">Automation</span><h3>npm + GitHub Actions</h3><p>npm runs local commands. GitHub Actions can run the gate on pull requests.</p></div>
+        </div>
+      </section>
+
+      <section id="use-cases">
+        <h2>Example Use Cases</h2>
+        <table>
+          <thead>
+            <tr><th>Use case</th><th>What it catches</th><th>Why it matters</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Prompt change review</td><td>A new prompt starts calling weak setups GO.</td><td>Stops quiet quality regressions before deployment.</td></tr>
+            <tr><td>Model comparison</td><td>Claude, Gemini, DeepSeek, or OpenAI disagree on the same cases.</td><td>Lets you compare cost, latency, and quality with a score.</td></tr>
+            <tr><td>Trading-rule change</td><td>A pullback rule gets treated like a breakout rule.</td><td>Protects the wiki strategy from being accidentally reversed.</td></tr>
+            <tr><td>Portfolio evidence</td><td>"I built an AI app" with no quality proof.</td><td>Shows production AI engineering: evals, real data, and gates.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="mjs">
+        <h2>What Is `.mjs`, and Why Use It?</h2>
+        <div class="grid">
+          <div class="item">
+            <h3>What `.mjs` means</h3>
+            <p>`.mjs` means "JavaScript module." It is still JavaScript, but it tells Node.js to use the modern module system where files can say `import fs from "node:fs"`.</p>
+          </div>
+          <div class="item">
+            <h3>What it is typically used for</h3>
+            <p>Build scripts, command-line tools, data exporters, repo automation, and scripts that need clean imports without changing the whole project configuration.</p>
+          </div>
+          <div class="item">
+            <h3>Why not `.js` here?</h3>
+            <p>A `.js` file can mean old CommonJS or modern modules depending on `package.json`. A `.mjs` file removes the guessing and always runs as a modern module.</p>
+          </div>
+          <div class="item">
+            <h3>Why it fits this project</h3>
+            <p>The exporter and eval runner are Node scripts, not React UI components. `.mjs` is a clean fit for automation that imports Prisma, reads files, writes JSON, and exits.</p>
+          </div>
+        </div>
+        <pre><code>import fs from "node:fs/promises";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();</code></pre>
+      </section>
+
+      <section id="line-by-line">
+        <h2>Line-by-Line System Walkthrough</h2>
+        <table>
+          <thead>
+            <tr><th>File or command</th><th>What it does</th><th>Beginner translation</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>export-neon-trading-eval.mjs</code></td><td>Connects to Neon with Prisma, reads `AListCandidate`, and writes generated JSON fixtures.</td><td>Take real dashboard examples out of the database and turn them into quiz questions.</td></tr>
+            <tr><td><code>neon-golden-set.json</code></td><td>Stores the expected answer for each generated case.</td><td>The answer key.</td></tr>
+            <tr><td><code>neon-results.json</code></td><td>Stores the baseline output being tested.</td><td>The student's answers.</td></tr>
+            <tr><td><code>eval-trading-brief.mjs</code></td><td>Compares each result against the expected verdict, score range, tags, flags, and rationale.</td><td>The teacher grading the quiz.</td></tr>
+            <tr><td><code>npm run eval:trading-brief:neon</code></td><td>Exports Neon rows, then immediately runs the eval gate.</td><td>Make the quiz from real data, then grade it.</td></tr>
+            <tr><td><code>trading_brief_eval.yml</code></td><td>GitHub Actions workflow that can run the eval gate during code review.</td><td>A robot checker in GitHub.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="agent-loop">
+        <h2>The Agentic Loop Used</h2>
+        <p>This work follows the agent-loop pattern from the AI engineering wiki: reason, act, observe, then decide whether the work is done.</p>
+        <div class="loop">
+          <div class="loop-step"><strong>Reason</strong>Define the checkable goal: explain the eval harness and prove it can use real Neon data.</div>
+          <div class="loop-step"><strong>Act</strong>Add the exporter, npm scripts, HTML explainer, and resume project link.</div>
+          <div class="loop-step"><strong>Observe</strong>Run the build, run the eval commands, and open the page in a browser.</div>
+          <div class="loop-step"><strong>Done?</strong>Stop only if the page renders, the resume link exists, and the eval gates pass.</div>
+        </div>
+      </section>
+
+      <section id="validation">
+        <h2>Validation Target</h2>
+        <p>The working validation target for this project is concrete and machine-checkable:</p>
+        <pre><code>npm run eval:trading-brief
+npm run eval:trading-brief:neon
+npm run build</code></pre>
+        <p>The Neon-backed run exports 24 rows from `AListCandidate`, generates local ignored files, and checks that the aggregate score is at least 80%. The last verified result was 100% over 24 generated cases.</p>
+        <div class="callout">
+          Private data guardrail: generated Neon files are kept under
+          `evals/trading-brief/generated/` and ignored by git because they may
+          include real tickers and trading records.
+        </div>
+      </section>
+
+      <p class="footer">
+        Created for Jie Sheng's resume portfolio. This page explains the
+        project artifact, not financial advice or a trading recommendation.
+      </p>
+    </main>
+  </body>
+</html>

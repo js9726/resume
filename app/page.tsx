@@ -1,5 +1,8 @@
 import {
   PROFILE,
+  EXPERIENCE,
+  EDUCATION,
+  CERTIFICATIONS,
   SKILLS,
   PROJECTS,
   LAST_UPDATED,
@@ -31,6 +34,28 @@ export default function Page() {
       <section>
         <h2 className="sec-title">Summary</h2>
         <p className="summary">{PROFILE.summary}</p>
+      </section>
+
+      <section>
+        <h2 className="sec-title">Experience</h2>
+        {EXPERIENCE.map((e) => (
+          <article className="project" key={e.company}>
+            <div className="p-head">
+              <h3 className="p-name">
+                {e.role} · {e.company}
+              </h3>
+              <span className="p-role">
+                {e.period}
+                {e.location ? ` · ${e.location}` : ""}
+              </span>
+            </div>
+            <ul className="p-list">
+              {e.bullets.map((b, i) => (
+                <li key={i}>{b}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
       </section>
 
       <section>
@@ -93,6 +118,31 @@ export default function Page() {
             )}
           </article>
         ))}
+      </section>
+
+      <section>
+        <h2 className="sec-title">Education &amp; Certifications</h2>
+        {EDUCATION.map((ed) => (
+          <article className="project" key={ed.school}>
+            <div className="p-head">
+              <h3 className="p-name">{ed.school}</h3>
+              <span className="p-role">{ed.period}</span>
+            </div>
+            <p className="p-blurb">{ed.degree}</p>
+            <ul className="p-list">
+              {ed.details.map((d, i) => (
+                <li key={i}>{d}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+        <div className="p-tags" style={{ marginTop: 10 }}>
+          {CERTIFICATIONS.map((c) => (
+            <span className="tag" key={c}>
+              {c}
+            </span>
+          ))}
+        </div>
       </section>
 
       <footer className="foot">

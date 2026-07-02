@@ -10,8 +10,63 @@ export const PROFILE = {
   email: "jiesheng2697@gmail.com",
   github: "https://github.com/js9726",
   summary:
-    "Full-stack and AI engineer who ships production web apps end-to-end — from Python data pipelines and BigQuery warehouses to Next.js front-ends on Vercel and Google Cloud Run. I specialise in LLM and agent systems: multi-agent orchestration, retrieval-grounded analysis, MCP tooling, and live data integrations. Comfortable owning the full lifecycle — ingestion, APIs, auth, CI/CD and deployment.",
+    "Full-stack and AI engineer who ships production web apps end-to-end — from Python data pipelines and BigQuery warehouses to Next.js front-ends on Vercel and Google Cloud Run. I specialise in LLM and agent systems: multi-agent orchestration, retrieval-grounded analysis, MCP tooling, and live data integrations — plus AI-integrated spreadsheet automation (Apps Script) for business workflows. Civil-engineering trained (UTAR), self-taught into software via e-commerce analytics; comfortable owning the full lifecycle — ingestion, APIs, auth, CI/CD and deployment.",
 };
+
+export interface ExperienceItem {
+  company: string;
+  role: string;
+  period: string;
+  location?: string;
+  bullets: string[];
+}
+
+export const EXPERIENCE: ExperienceItem[] = [
+  {
+    company: "Walplus",
+    role: "E-Commerce Key Account Manager & Data Analyst",
+    period: "2021 – Present",
+    location: "Kuala Lumpur, Malaysia",
+    bullets: [
+      "Drive marketplace growth across Amazon, Wayfair and B&Q — owning PPC, pricing and conversion optimisation across channels.",
+      "Built the company's internal analytics stack: Linnworks → BigQuery data pipelines and a React/Express operations dashboard on Google Cloud Run (see project below).",
+      "Turn data into revenue: sales & advertising performance insight, gross-profit modelling, FBA replenishment and repricing automation.",
+    ],
+  },
+  {
+    company: "G&P Geotechnics Sdn Bhd",
+    role: "Geotechnical Engineer (prior: Intern)",
+    period: "Feb 2021 – Aug 2021",
+    location: "Malaysia",
+    bullets: [
+      "Strip-raft foundation design for an elevated water tank using SAFE analysis.",
+      "Slope stability analysis (Slope/W) for pushback slope design.",
+    ],
+  },
+];
+
+export interface EducationItem {
+  school: string;
+  degree: string;
+  period: string;
+  details: string[];
+}
+
+export const EDUCATION: EducationItem[] = [
+  {
+    school: "Universiti Tunku Abdul Rahman (UTAR)",
+    degree: "Bachelor of Civil Engineering (Honours) — Merit",
+    period: "2016 – 2020",
+    details: [
+      "Dean's List; Silver Award — International UTM Bridge Model Competition 2019 (ranked 13/78).",
+      "Student member: Institution of Engineers Malaysia (IEM) & ICE Student Chapter.",
+    ],
+  },
+];
+
+export const CERTIFICATIONS: string[] = [
+  "CompTIA Cloud Essentials+",
+];
 
 export interface SkillGroup {
   group: string;
@@ -32,6 +87,15 @@ export const SKILLS: SkillGroup[] = [
       "Google BigQuery",
       "Google Cloud Storage",
       "REST APIs",
+      "Google Apps Script",
+    ],
+  },
+  {
+    group: "Automation",
+    items: [
+      "AI-integrated spreadsheet systems (Sheets + Apps Script + LLM pipelines)",
+      "ETL pipelines",
+      "GitHub Actions",
     ],
   },
   {
@@ -76,18 +140,21 @@ export const PROJECTS: Project[] = [
   {
     name: "AI Market Dashboard — Multi-Agent Trading SaaS",
     role: "Solo build · 2026",
-    stack: ["Next.js 15.5", "TypeScript", "Python", "PostgreSQL", "Prisma", "Vercel"],
-    tags: ["AI / LLM", "Full-stack", "SaaS"],
+    stack: ["Next.js 15.5", "TypeScript", "Python", "Neon Postgres", "Prisma", "Vercel"],
+    tags: ["AI / LLM", "Full-stack", "SaaS", "Eval harness"],
     blurb:
       "Private-beta SaaS that turns live market and broker data into AI-generated trade analysis.",
     highlights: [
       "Built a multi-agent analysis engine (fundamental + technical agents over a shared state) producing a weighted Conviction Score and an LLM-authored daily morning brief.",
+      "Added a Neon-backed eval harness that exports real A-list rows, checks AI verdicts against golden expectations, and gates regressions with an 80% quality threshold.",
       "Engineered a Python ingestion pipeline (yfinance, Finviz, market breadth) feeding a Next.js App Router front-end; a Mon–Fri GitHub Actions refresh auto-redeploys to Vercel.",
       "Integrated live brokerage feeds (moomoo OpenD + IBKR bridges) with a fail-closed freshness guard that halts analysis on stale or missing data.",
       "Implemented NextAuth v5 (Google OAuth) + Prisma + PostgreSQL with role-based access and middleware route protection.",
     ],
     note: "Private beta — live walkthrough available on request.",
-    links: [],
+    links: [
+      { label: "Eval harness explainer", href: "/ai-eval-harness-explainer.html" },
+    ],
   },
   {
     name: "Multi-Channel E-Commerce Operations Dashboard",
@@ -136,6 +203,22 @@ export const PROJECTS: Project[] = [
     ],
     links: [],
   },
+  {
+    name: "Trade Journal Pro — AI-Integrated Spreadsheet System",
+    role: "Solo build · 2025–2026",
+    stack: ["Google Apps Script", "Google Sheets", "Yahoo Finance API", "LLM agents"],
+    tags: ["Automation", "AI / LLM", "Spreadsheets"],
+    blurb:
+      "A fully automated trading journal in Google Sheets that doubles as the data source for an AI analysis pipeline.",
+    highlights: [
+      "56-column journal generated by Apps Script: ~20 manual inputs, everything else computed — R-multiples, position sizing, risk/reward, exposure flags.",
+      "Live market data pulled in-sheet: ATR and 50-day MA auto-fetched from Yahoo Finance, real-time pricing via Google Finance.",
+      "Built-in risk guardrails: earnings-proximity, stop-distance vs ATR, extension vs 50MA and quantity-deviation warnings, colour-coded per cell.",
+      "Feeds a downstream AI agent that reads each journal row, scores the trade against a curated strategy wiki, and writes structured reviews back to a journal doc and live dashboard.",
+    ],
+    note: "Private workbook (personal trading data) — demo walkthrough available on request.",
+    links: [],
+  },
 ];
 
-export const LAST_UPDATED = "2026-06-30";
+export const LAST_UPDATED = "2026-07-02";
