@@ -97,6 +97,17 @@ export default function Page() {
                 <li key={i}>{h}</li>
               ))}
             </ul>
+            {p.images && p.images.length > 0 && (
+              <div className="p-shots">
+                {p.images.map((img) => (
+                  <figure className="shot" key={img.src}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={img.src} alt={img.caption} loading="lazy" />
+                    <figcaption>{img.caption}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            )}
             {p.note && <p className="p-note">{p.note}</p>}
             <p className="p-stack">
               <strong>Stack:</strong> {p.stack.join(" · ")}

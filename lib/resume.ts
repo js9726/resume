@@ -10,7 +10,7 @@ export const PROFILE = {
   email: "jiesheng2697@gmail.com",
   github: "https://github.com/js9726",
   summary:
-    "Full-stack and AI engineer who ships production web apps end-to-end - from Python data pipelines and BigQuery warehouses to Next.js front-ends on Vercel and Google Cloud Run. I specialise in LLM and agent systems, mobile-first workflow design, and SME compliance tooling: multi-agent orchestration, retrieval-grounded analysis, MCP tooling, live data integrations, and AI-integrated business automation. Civil-engineering trained (UTAR), self-taught into software via e-commerce analytics; comfortable owning the full lifecycle - ingestion, APIs, auth, CI/CD and deployment.",
+    "Full-stack and AI engineer who ships production web apps end-to-end - from Python data pipelines and BigQuery warehouses to Next.js front-ends on Vercel and Google Cloud Run. I specialise in LLM and agent systems, chat-first capture interfaces, and business automation that starts where the work actually happens - spreadsheets: multi-agent orchestration, retrieval-grounded analysis, multimodal vision-to-structured-data extraction, MCP tooling, live data integrations, and macro / Apps Script / VBA automation. Civil-engineering trained (UTAR), self-taught into software through Excel VBA macros and e-commerce analytics; comfortable owning the full lifecycle - ingestion, APIs, auth, CI/CD and deployment.",
 };
 
 export interface ExperienceItem {
@@ -31,6 +31,7 @@ export const EXPERIENCE: ExperienceItem[] = [
       "Drive marketplace growth across Amazon, Wayfair and B&Q - owning PPC, pricing and conversion optimisation across channels.",
       "Built the company's internal analytics stack: Linnworks -> BigQuery data pipelines and a React/Express operations dashboard on Google Cloud Run (see project below).",
       "Turn data into revenue: sales & advertising performance insight, gross-profit modelling, FBA replenishment and repricing automation.",
+      "Automated the reporting layer before it was a warehouse: Excel VBA and Google Sheets macro / Apps Script tooling that pulled, cleaned and reformatted channel order and stock exports into recurring reports, and drove the pricing, gross-profit and replenishment workbooks - later formalised into the BigQuery pipelines and dashboard above.",
     ],
   },
   {
@@ -92,12 +93,18 @@ export const SKILLS: SkillGroup[] = [
     ],
   },
   {
-    group: "Automation",
+    group: "Spreadsheet & Office Automation",
     items: [
+      "Google Apps Script (Sheets + Docs)",
+      "Custom menus, triggers & UrlFetchApp API sync",
+      "Google Sheets macros & custom functions",
+      "Excel VBA macros",
       "AI-integrated spreadsheet systems (Sheets + Apps Script + LLM pipelines)",
-      "ETL pipelines",
-      "GitHub Actions",
     ],
+  },
+  {
+    group: "Automation",
+    items: ["ETL pipelines", "GitHub Actions", "Scheduled cron workers"],
   },
   {
     group: "AI / LLM",
@@ -106,7 +113,9 @@ export const SKILLS: SkillGroup[] = [
       "RAG",
       "MCP servers",
       "Prompt caching",
+      "Vision -> structured JSON extraction",
       "Claude / Gemini / DeepSeek APIs",
+      "Telegram Bot API interfaces",
     ],
   },
   {
@@ -127,6 +136,13 @@ export interface ProjectLink {
   href: string;
 }
 
+export interface ProjectImage {
+  /** Path under /public, e.g. "/shots/macrosnap-today.png". */
+  src: string;
+  /** Shown as the caption under the shot, and used as alt text. */
+  caption: string;
+}
+
 export interface Project {
   name: string;
   role: string;
@@ -136,9 +152,54 @@ export interface Project {
   highlights: string[];
   note?: string;
   links: ProjectLink[];
+  /** Optional app screenshots. Omit or leave empty to render no gallery. */
+  images?: ProjectImage[];
 }
 
 export const PROJECTS: Project[] = [
+  {
+    name: "MacroSnap - Photo-to-Macros AI Food Tracker (Telegram Bot + PWA)",
+    role: "Solo build - 2026",
+    stack: [
+      "Next.js (App Router)",
+      "TypeScript",
+      "Telegram Bot API",
+      "Gemini 2.5 Flash vision",
+      "Neon Postgres",
+      "Prisma",
+      "Vercel",
+    ],
+    tags: ["AI / LLM", "Multimodal", "Full-stack", "Mobile / PWA"],
+    blurb:
+      "A nutrition tracker whose capture surface is a chat message: send a meal photo to a Telegram bot and get calories, protein, carbs and fat back in seconds.",
+    highlights: [
+      "Built a vision-to-structured-JSON pipeline - Gemini 2.5 Flash reads the meal photo directly (caption optional) and returns per-item macros.",
+      "Added a provider-agnostic safety layer that re-checks the 4/4/9 kcal energy identity against the returned macros and downgrades the confidence label when they disagree; swapping model providers is a one-file change (the build has run on both Gemini vision and a text-only DeepSeek estimator).",
+      "Shipped a Telegram command surface (/log, /today, /weight, /settings, /undo) plus a Next.js PWA for review and item-by-item portion correction - the corrected meal becomes the saved source of truth.",
+      "Wrote an adaptive TDEE engine that derives real maintenance from 14-day intake versus weight change, falling back to Katch-McArdle / Mifflin-St Jeor formula targets until enough logged days exist.",
+      "Integrated the Hevy training API for week-over-week volume and per-exercise working-set deltas as a muscle-retention signal - deliberately excluded from the calorie budget because lifting burn is small and badly estimated.",
+      "Locked the app to a single account: Telegram Web-App auth + Next.js middleware, allowed-chat-ID gate and webhook secret; Neon pooled/unpooled connection split so the production build never touches the database.",
+    ],
+    note: "Private single-user app (personal health data) - walkthrough available on request. Bodyweight readings are redacted in the screenshots.",
+    links: [],
+    images: [
+      {
+        src: "/shots/macrosnap-meal.png",
+        caption:
+          "Meal review: the model's own confidence flag, stated assumptions, and a per-item portion slider that rewrites the macros.",
+      },
+      {
+        src: "/shots/macrosnap-today.png",
+        caption:
+          "Daily view and capture surface - photo in, calories/protein/carbs/fat out, caption optional.",
+      },
+      {
+        src: "/shots/macrosnap-trends.png",
+        caption:
+          "Adaptive TDEE and the Hevy training feed, used together as a muscle-retention signal.",
+      },
+    ],
+  },
   {
     name: "Malaysia SME E-Invoicing Sandbox - Mobile-First Compliance App",
     role: "Solo build - 2026",
@@ -224,16 +285,25 @@ export const PROJECTS: Project[] = [
     links: [],
   },
   {
-    name: "Trade Journal Pro - AI-Integrated Spreadsheet System",
+    name: "Trade Journal Pro - AI-Integrated Spreadsheet & Docs Automation",
     role: "Solo build - 2025-2026",
-    stack: ["Google Apps Script", "Google Sheets", "Yahoo Finance API", "LLM agents"],
-    tags: ["Automation", "AI / LLM", "Spreadsheets"],
+    stack: [
+      "Google Apps Script",
+      "Google Sheets",
+      "Google Docs",
+      "Yahoo Finance API",
+      "LLM agents",
+    ],
+    tags: ["Automation", "AI / LLM", "Spreadsheets", "Macros"],
     blurb:
-      "A fully automated trading journal in Google Sheets that doubles as the data source for an AI analysis pipeline.",
+      "A fully automated trading journal in Google Sheets that doubles as the data source for an AI analysis pipeline, plus a Docs renderer that syncs the reviewed journal back out of a live API.",
     highlights: [
-      "56-column journal generated by Apps Script: ~20 manual inputs, everything else computed - R-multiples, position sizing, risk/reward, exposure flags.",
+      "~1,200 lines of Apps Script across two bound projects (a Sheets journal generator and a Docs renderer).",
+      "56-column journal generated by macro: ~20 manual inputs, everything else computed - R-multiples, position sizing, risk/reward, exposure flags.",
       "Live market data pulled in-sheet: ATR and 50-day MA auto-fetched from Yahoo Finance, real-time pricing via Google Finance.",
       "Built-in risk guardrails: earnings-proximity, stop-distance vs ATR, extension vs 50MA and quantity-deviation warnings, colour-coded per cell.",
+      "Docs renderer pulls canonical sessions and trading rules from the dashboard API over UrlFetchApp, backs up the existing document, rebuilds its tabs, then PATCHes a sync receipt back - all driven from a custom onOpen menu.",
+      "Credentials handled through Apps Script PropertiesService script properties, so no secret ever lands in the script source.",
       "Feeds a downstream AI agent that reads each journal row, scores the trade against a curated strategy wiki, and writes structured reviews back to a journal doc and live dashboard.",
     ],
     note: "Private workbook (personal trading data) - demo walkthrough available on request.",
@@ -241,4 +311,4 @@ export const PROJECTS: Project[] = [
   },
 ];
 
-export const LAST_UPDATED = "2026-07-03";
+export const LAST_UPDATED = "2026-08-07";
