@@ -4,13 +4,13 @@
 
 export const PROFILE = {
   name: "Jie Sheng",
-  title: "Full-Stack & AI Engineer",
+  title: "AI Engineer - LLM systems in production, on data infrastructure I build and operate",
   avatar: "/headshot.png",
   location: "Malaysia",
   email: "jiesheng2697@gmail.com",
   github: "https://github.com/js9726",
   summary:
-    "Full-stack and AI engineer who ships production web apps end-to-end - from Python data pipelines and BigQuery warehouses to Next.js front-ends on Vercel and Google Cloud Run. I specialise in LLM and agent systems, chat-first capture interfaces, and business automation that starts where the work actually happens - spreadsheets: multi-agent orchestration, retrieval-grounded analysis, multimodal vision-to-structured-data extraction, MCP tooling, live data integrations, and macro / Apps Script / VBA automation. Civil-engineering trained (UTAR), self-taught into software through Excel VBA macros and e-commerce analytics; comfortable owning the full lifecycle - ingestion, APIs, auth, CI/CD and deployment.",
+    "AI engineer who ships LLM systems into production and owns the data infrastructure underneath them. Five years building and operating a multi-channel e-commerce analytics platform - Linnworks -> BigQuery pipelines spanning 7 sales channels, 40,000+ SKUs and 200+ orders per day, gross-profit modelling, and a React/Express operations dashboard on Google Cloud Run - then layering AI on top of it: multi-agent orchestration, retrieval-grounded analysis, multimodal vision-to-structured-data extraction, MCP tooling, live data integrations, and macro / Apps Script / VBA automation. I practise eval-driven development - a Postgres-backed harness scores agent outputs against golden expectations and a CI gate blocks regressions below 80%, and live data paths fail closed rather than degrade silently. Civil-engineering trained (UTAR), self-taught into software through Excel VBA macros and e-commerce analytics; comfortable owning the full lifecycle - ingestion, APIs, auth, CI/CD and deployment.",
 };
 
 export interface ExperienceItem {
@@ -24,14 +24,15 @@ export interface ExperienceItem {
 export const EXPERIENCE: ExperienceItem[] = [
   {
     company: "Walplus",
-    role: "E-Commerce Key Account Manager & Data Analyst",
-    period: "2021 - Present",
+    role: "Data & AI Engineering (formal title: E-Commerce Key Account Manager & Data Analyst)",
+    period: "Aug 2021 - Present",
     location: "Kuala Lumpur, Malaysia",
     bullets: [
-      "Drive marketplace growth across Amazon, Wayfair and B&Q - owning PPC, pricing and conversion optimisation across channels.",
-      "Built the company's internal analytics stack: Linnworks -> BigQuery data pipelines and a React/Express operations dashboard on Google Cloud Run (see project below).",
-      "Turn data into revenue: sales & advertising performance insight, gross-profit modelling, FBA replenishment and repricing automation.",
-      "Automated the reporting layer before it was a warehouse: Excel VBA and Google Sheets macro / Apps Script tooling that pulled, cleaned and reformatted channel order and stock exports into recurring reports, and drove the pricing, gross-profit and replenishment workbooks - later formalised into the BigQuery pipelines and dashboard above.",
+      "Designed, built and operate the company's analytics platform end-to-end - Linnworks -> Google BigQuery ingestion pipelines feeding a containerised React/Express operations dashboard on Google Cloud Run. Spans 7 sales channels (Amazon, eBay, Wayfair, Etsy, Shopify and Mirakl-based marketplaces including The Range), 40,000+ SKUs and 200+ orders per day. Sole engineer on the system: architecture, deployment and ongoing operation.",
+      "Built the gross-profit model that drives pricing across the marketplace estate, plus automated repricing to target-GP thresholds accounting for marketplace fee, shipping and incident allowances.",
+      "Built FBA replenishment forecasting that converts historical sell-through, current FBA stock, pack size and MOQ into shipment quantities.",
+      "Automated the reporting layer years before the warehouse existed: Excel VBA and Google Sheets macro / Apps Script tooling that pulled, cleaned and reformatted channel order and stock exports into recurring reports, and drove the pricing, gross-profit and replenishment workbooks - later formalised into the BigQuery pipelines and dashboard above.",
+      "Own marketplace P&L across the channel estate - PPC, pricing and conversion optimisation - the commercial context that informs every model above.",
     ],
   },
   {
@@ -75,6 +76,19 @@ export interface SkillGroup {
 }
 
 export const SKILLS: SkillGroup[] = [
+  {
+    group: "AI / LLM",
+    items: [
+      "Multi-agent orchestration",
+      "RAG",
+      "MCP servers",
+      "Eval-driven development (golden-set harness + CI regression gate)",
+      "Prompt caching",
+      "Vision -> structured JSON extraction",
+      "Claude / Gemini / DeepSeek APIs",
+      "Telegram Bot API interfaces",
+    ],
+  },
   { group: "Languages", items: ["TypeScript", "Python", "JavaScript", "SQL"] },
   {
     group: "Frontend",
@@ -105,18 +119,6 @@ export const SKILLS: SkillGroup[] = [
   {
     group: "Automation",
     items: ["ETL pipelines", "GitHub Actions", "Scheduled cron workers"],
-  },
-  {
-    group: "AI / LLM",
-    items: [
-      "Multi-agent orchestration",
-      "RAG",
-      "MCP servers",
-      "Prompt caching",
-      "Vision -> structured JSON extraction",
-      "Claude / Gemini / DeepSeek APIs",
-      "Telegram Bot API interfaces",
-    ],
   },
   {
     group: "Infra / DevOps",
@@ -157,6 +159,25 @@ export interface Project {
 }
 
 export const PROJECTS: Project[] = [
+  {
+    name: "AI Market Dashboard - Multi-Agent Trading SaaS",
+    role: "Solo build - 2026",
+    stack: ["Next.js 15.5", "TypeScript", "Python", "Neon Postgres", "Prisma", "Vercel"],
+    tags: ["AI / LLM", "Full-stack", "SaaS", "Eval harness"],
+    blurb:
+      "Private-beta SaaS that turns live market and broker data into AI-generated trade analysis.",
+    highlights: [
+      "Built a multi-agent analysis engine (fundamental + technical agents over a shared state) producing a weighted Conviction Score and an LLM-authored daily morning brief.",
+      "Added a Neon-backed eval harness that exports real A-list rows, checks AI verdicts against golden expectations, and gates regressions with an 80% quality threshold.",
+      "Engineered a Python ingestion pipeline (yfinance, Finviz, market breadth) feeding a Next.js App Router front-end; a Mon-Fri GitHub Actions refresh auto-redeploys to Vercel.",
+      "Integrated live brokerage feeds (moomoo OpenD + IBKR bridges) with a fail-closed freshness guard that halts analysis on stale or missing data.",
+      "Implemented NextAuth v5 (Google OAuth) + Prisma + PostgreSQL with role-based access and middleware route protection.",
+    ],
+    note: "Private beta - live walkthrough available on request.",
+    links: [
+      { label: "Eval harness explainer", href: "/ai-eval-harness-explainer.html" },
+    ],
+  },
   {
     name: "MacroSnap - Photo-to-Macros AI Food Tracker (Telegram Bot + PWA)",
     role: "Solo build - 2026",
@@ -216,25 +237,6 @@ export const PROJECTS: Project[] = [
     note: "Sandbox prototype - no live tax submission or credentials.",
     links: [
       { label: "GitHub", href: "https://github.com/js9726/sme-e-invoicing-sandbox" },
-    ],
-  },
-  {
-    name: "AI Market Dashboard - Multi-Agent Trading SaaS",
-    role: "Solo build - 2026",
-    stack: ["Next.js 15.5", "TypeScript", "Python", "Neon Postgres", "Prisma", "Vercel"],
-    tags: ["AI / LLM", "Full-stack", "SaaS", "Eval harness"],
-    blurb:
-      "Private-beta SaaS that turns live market and broker data into AI-generated trade analysis.",
-    highlights: [
-      "Built a multi-agent analysis engine (fundamental + technical agents over a shared state) producing a weighted Conviction Score and an LLM-authored daily morning brief.",
-      "Added a Neon-backed eval harness that exports real A-list rows, checks AI verdicts against golden expectations, and gates regressions with an 80% quality threshold.",
-      "Engineered a Python ingestion pipeline (yfinance, Finviz, market breadth) feeding a Next.js App Router front-end; a Mon-Fri GitHub Actions refresh auto-redeploys to Vercel.",
-      "Integrated live brokerage feeds (moomoo OpenD + IBKR bridges) with a fail-closed freshness guard that halts analysis on stale or missing data.",
-      "Implemented NextAuth v5 (Google OAuth) + Prisma + PostgreSQL with role-based access and middleware route protection.",
-    ],
-    note: "Private beta - live walkthrough available on request.",
-    links: [
-      { label: "Eval harness explainer", href: "/ai-eval-harness-explainer.html" },
     ],
   },
   {
