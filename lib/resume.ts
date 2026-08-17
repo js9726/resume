@@ -31,6 +31,9 @@ export const EXPERIENCE: ExperienceItem[] = [
       "Designed, built and operate the company's analytics platform end-to-end - Linnworks -> Google BigQuery ingestion pipelines feeding a containerised React/Express operations dashboard on Google Cloud Run. Spans 7 sales channels (Amazon, eBay, Wayfair, Etsy, Shopify and Mirakl-based marketplaces including The Range), 40,000+ SKUs and 200+ orders per day. Sole engineer on the system: architecture, deployment and ongoing operation.",
       "Built the gross-profit model that drives pricing across the marketplace estate, plus automated repricing to target-GP thresholds accounting for marketplace fee, shipping and incident allowances.",
       "Built FBA replenishment forecasting that converts historical sell-through, current FBA stock, pack size and MOQ into shipment quantities.",
+      "Implemented dynamic pricing on Google Vertex AI, pricing against demand, competitor movement and seasonality.",
+      "Ran cloud cost optimisation across AWS and GCP with actionable reduction recommendations; managed GCP resources and scheduled workloads via cron on Compute Engine VMs.",
+      "Automated browser-driven processes and regression testing with Selenium, and built responsive interfaces across MERN, Next.js, Django and Flask.",
       "Automated the reporting layer years before the warehouse existed: Excel VBA and Google Sheets macro / Apps Script tooling that pulled, cleaned and reformatted channel order and stock exports into recurring reports, and drove the pricing, gross-profit and replenishment workbooks - later formalised into the BigQuery pipelines and dashboard above.",
       "Own marketplace P&L across the channel estate - PPC, pricing and conversion optimisation - the commercial context that informs every model above.",
     ],
@@ -83,6 +86,7 @@ export const SKILLS: SkillGroup[] = [
       "RAG",
       "MCP servers",
       "Eval-driven development (golden-set harness + CI regression gate)",
+      "Google Vertex AI (dynamic pricing in production)",
       "Prompt caching",
       "Vision -> structured JSON extraction",
       "Claude / Gemini / DeepSeek APIs",
@@ -92,7 +96,7 @@ export const SKILLS: SkillGroup[] = [
   { group: "Languages", items: ["TypeScript", "Python", "JavaScript", "SQL"] },
   {
     group: "Frontend",
-    items: ["Next.js (App Router)", "React 19", "Tailwind", "Expo / React Native", "SVG data-viz"],
+    items: ["Next.js (App Router)", "React 19", "Tailwind", "Expo / React Native", "MERN", "Django", "Flask", "SVG data-viz"],
   },
   {
     group: "Backend & Data",
@@ -125,10 +129,13 @@ export const SKILLS: SkillGroup[] = [
     items: [
       "Vercel",
       "Google Cloud Run",
+      "AWS + GCP cost optimisation",
+      "GCP Compute Engine + cron scheduling",
       "Serverless functions",
       "GitHub Actions CI/CD",
       "OAuth / NextAuth v5",
       "Docker",
+      "Selenium automation & regression testing",
     ],
   },
 ];
