@@ -10,7 +10,7 @@ export const PROFILE = {
   email: "jiesheng2697@gmail.com",
   github: "https://github.com/js9726",
   summary:
-    "AI engineer who ships LLM systems into production and owns the data infrastructure underneath them. Five years building and operating a multi-channel e-commerce analytics platform - Linnworks -> BigQuery pipelines spanning 7 sales channels, 40,000+ SKUs and 200+ orders per day, gross-profit modelling, and a React/Express operations dashboard on Google Cloud Run - then layering AI on top of it: multi-agent orchestration, retrieval-grounded analysis, multimodal vision-to-structured-data extraction, MCP tooling, live data integrations, and macro / Apps Script / VBA automation. I practise eval-driven development - a Postgres-backed harness scores agent outputs against golden expectations and a CI gate blocks regressions below 80%, and live data paths fail closed rather than degrade silently. Civil-engineering trained (UTAR), self-taught into software through Excel VBA macros and e-commerce analytics; comfortable owning the full lifecycle - ingestion, APIs, auth, CI/CD and deployment.",
+    "AI engineer who builds production LLM-assisted systems and owns the data infrastructure underneath them. Five years building and operating a multi-channel e-commerce analytics platform - Linnworks -> BigQuery pipelines spanning 7 sales channels, 40,000+ SKUs and 200+ orders per day, gross-profit modelling, and a React/Express operations dashboard on Google Cloud Run - then layering AI on top of it: role-based analysis pipelines, knowledge-grounded reasoning, multimodal vision-to-structured-data extraction, tool integrations, live data connections, and macro / Apps Script / VBA automation. I practise eval-driven development with versioned golden cases, deterministic CI quality gates, and an optional Neon export path for reviewing real analysis rows; live data paths fail closed rather than degrade silently. Civil-engineering trained (UTAR), self-taught into software through Excel VBA macros and e-commerce analytics; comfortable owning the full lifecycle - ingestion, APIs, auth, CI/CD and deployment.",
 };
 
 export interface ExperienceItem {
@@ -31,9 +31,9 @@ export const EXPERIENCE: ExperienceItem[] = [
       "Designed, built and operate the company's analytics platform end-to-end - Linnworks -> Google BigQuery ingestion pipelines feeding a containerised React/Express operations dashboard on Google Cloud Run. Spans 7 sales channels (Amazon, eBay, Wayfair, Etsy, Shopify and Mirakl-based marketplaces including The Range), 40,000+ SKUs and 200+ orders per day. Sole engineer on the system: architecture, deployment and ongoing operation.",
       "Built the gross-profit model that drives pricing across the marketplace estate, plus automated repricing to target-GP thresholds accounting for marketplace fee, shipping and incident allowances.",
       "Built FBA replenishment forecasting that converts historical sell-through, current FBA stock, pack size and MOQ into shipment quantities.",
-      "Implemented dynamic pricing on Google Vertex AI, pricing against demand, competitor movement and seasonality.",
-      "Ran cloud cost optimisation across AWS and GCP with actionable reduction recommendations; managed GCP resources and scheduled workloads via cron on Compute Engine VMs.",
-      "Automated browser-driven processes and regression testing with Selenium, and built responsive interfaces across MERN, Next.js, Django and Flask.",
+      "Used Google Vertex AI to support dynamic-pricing decisions based on demand, competitor movement and seasonality.",
+      "Reduced GCP compute cost by scheduling Compute Engine VMs and right-sizing instance/thread capacity; configured AWS Budgets and basic cost controls.",
+      "Used Selenium for browser-driven data collection, including Amazon review research and Malaysian property-listing analysis; built responsive interfaces with MERN and Next.js plus backend services with Django and Flask.",
       "Automated the reporting layer years before the warehouse existed: Excel VBA and Google Sheets macro / Apps Script tooling that pulled, cleaned and reformatted channel order and stock exports into recurring reports, and drove the pricing, gross-profit and replenishment workbooks - later formalised into the BigQuery pipelines and dashboard above.",
       "Own marketplace P&L across the channel estate - PPC, pricing and conversion optimisation - the commercial context that informs every model above.",
     ],
@@ -82,11 +82,11 @@ export const SKILLS: SkillGroup[] = [
   {
     group: "AI / LLM",
     items: [
-      "Multi-agent orchestration",
-      "RAG",
-      "MCP servers",
-      "Eval-driven development (golden-set harness + CI regression gate)",
-      "Google Vertex AI (dynamic pricing in production)",
+      "Role-based AI analysis pipelines",
+      "Knowledge-grounded LLM workflows",
+      "MCP-compatible tool integrations",
+      "Eval-driven development (versioned golden cases + deterministic CI gate)",
+      "Google Vertex AI (dynamic-pricing decision support)",
       "Prompt caching",
       "Vision -> structured JSON extraction",
       "Claude / Gemini / DeepSeek APIs",
@@ -96,7 +96,7 @@ export const SKILLS: SkillGroup[] = [
   { group: "Languages", items: ["TypeScript", "Python", "JavaScript", "SQL"] },
   {
     group: "Frontend",
-    items: ["Next.js (App Router)", "React 19", "Tailwind", "Expo / React Native", "MERN", "Django", "Flask", "SVG data-viz"],
+    items: ["Next.js (App Router)", "React 19", "Tailwind", "Expo / React Native", "MERN", "SVG data-viz"],
   },
   {
     group: "Backend & Data",
@@ -108,6 +108,8 @@ export const SKILLS: SkillGroup[] = [
       "Google Cloud Storage",
       "REST APIs",
       "Google Apps Script",
+      "Django",
+      "Flask",
     ],
   },
   {
@@ -129,13 +131,13 @@ export const SKILLS: SkillGroup[] = [
     items: [
       "Vercel",
       "Google Cloud Run",
-      "AWS + GCP cost optimisation",
-      "GCP Compute Engine + cron scheduling",
+      "GCP Compute Engine scheduling + right-sizing",
+      "AWS Budgets + basic cost controls",
       "Serverless functions",
       "GitHub Actions CI/CD",
       "OAuth / NextAuth v5",
       "Docker",
-      "Selenium automation & regression testing",
+      "Selenium web-data collection",
     ],
   },
 ];
@@ -174,8 +176,8 @@ export const PROJECTS: Project[] = [
     blurb:
       "Private-beta SaaS that turns live market and broker data into AI-generated trade analysis.",
     highlights: [
-      "Built a multi-agent analysis engine (fundamental + technical agents over a shared state) producing a weighted Conviction Score and an LLM-authored daily morning brief.",
-      "Added a Neon-backed eval harness that exports real A-list rows, checks AI verdicts against golden expectations, and gates regressions with an 80% quality threshold.",
+      "Built a role-based analysis pipeline combining deterministic data/risk checks with LLM-generated analysis to produce a weighted Conviction Score and daily morning brief.",
+      "Added a Neon export path for reviewing real A-list rows plus a deterministic CI gate that scores versioned evaluation results against an 80% quality threshold.",
       "Engineered a Python ingestion pipeline (yfinance, Finviz, market breadth) feeding a Next.js App Router front-end; a Mon-Fri GitHub Actions refresh auto-redeploys to Vercel.",
       "Integrated live brokerage feeds (moomoo OpenD + IBKR bridges) with a fail-closed freshness guard that halts analysis on stale or missing data.",
       "Implemented NextAuth v5 (Google OAuth) + Prisma + PostgreSQL with role-based access and middleware route protection.",
@@ -282,15 +284,30 @@ export const PROJECTS: Project[] = [
   {
     name: "Trading Assistant Skill Suite - Wiki-Grounded AI Agents",
     role: "Solo build - 2026",
-    stack: ["Claude Agent SDK", "MCP", "Python", "TypeScript"],
-    tags: ["AI / LLM", "Agents", "MCP"],
+    stack: ["Claude Agent SDK", "Python", "TypeScript", "OpenD"],
+    tags: ["AI / LLM", "Agents", "Knowledge systems"],
     blurb:
       "A curated knowledge base plus global assistant skills that score trades against a maintained trading wiki.",
     highlights: [
-      "Wiki-grounded trade-analyser skill (RAG over a living knowledge base) scoring setups with a Conviction model.",
-      "MCP + broker (OpenD) integration for live positions and quotes, with auto-journaling back to the dashboard.",
+      "Wiki-grounded trade-analyser skill that loads maintained trading knowledge and scores setups with a Conviction model.",
+      "OpenD broker bridge for live positions and quotes, with structured journaling back to the dashboard.",
       "Dual-agent design portable across Claude Code and Codex from one authoring source.",
     ],
+    links: [],
+  },
+  {
+    name: "Malaysia Auction Property Rental-Yield Screener",
+    role: "Personal research tool",
+    stack: ["Python", "Selenium", "Web data extraction", "Spreadsheet analysis"],
+    tags: ["Automation", "Data", "Property research"],
+    blurb:
+      "A browser-automation research workflow for comparing Malaysian auction properties with online rental listings.",
+    highlights: [
+      "Collected comparable rental-listing evidence with Selenium and normalised it for property-level analysis.",
+      "Estimated gross rental yield and surfaced candidates above a 7% screening threshold for manual investment review.",
+      "Kept the result as a research shortlist rather than an automated investment decision.",
+    ],
+    note: "Private research workflow; listing data and investment decisions are not published.",
     links: [],
   },
   {
@@ -320,4 +337,4 @@ export const PROJECTS: Project[] = [
   },
 ];
 
-export const LAST_UPDATED = "2026-08-07";
+export const LAST_UPDATED = "2026-08-18";

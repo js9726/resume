@@ -6,6 +6,12 @@
 *.pem
 .env*
 .vercel
+
+# Local Codex/Playwright verification output
+.codex-next-*.log
+.playwright-cli/
+/output/
+*.tsbuildinfo
 next-env.d.ts
 
 .vercel
