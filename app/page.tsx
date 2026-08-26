@@ -20,11 +20,11 @@ export default function Page() {
             <h1 className="name">{PROFILE.name}</h1>
             <p className="role">{PROFILE.title}</p>
             <div className="contact">
-            <a href={`mailto:${PROFILE.email}`}>{PROFILE.email}</a>
-            <a href={PROFILE.github} target="_blank" rel="noreferrer">
-              github.com/{PROFILE.github.split("/").pop()}
-            </a>
-            <span>{PROFILE.location}</span>
+              <a href={`mailto:${PROFILE.email}`}>{PROFILE.email}</a>
+              <a href={PROFILE.github} target="_blank" rel="noreferrer">
+                github.com/{PROFILE.github.split("/").pop()}
+              </a>
+              <span>{PROFILE.location}</span>
             </div>
           </div>
         </div>
@@ -78,57 +78,62 @@ export default function Page() {
 
       <section>
         <h2 className="sec-title">Selected Projects</h2>
-        {PROJECTS.map((p) => (
-          <article className="project" key={p.name}>
-            <div className="p-head">
-              <h3 className="p-name">{p.name}</h3>
-              <span className="p-role">{p.role}</span>
-            </div>
-            <div className="p-tags">
-              {p.tags.map((t) => (
-                <span className="tag" key={t}>
-                  {t}
-                </span>
-              ))}
-            </div>
-            <p className="p-blurb">{p.blurb}</p>
-            <ul className="p-list">
-              {p.highlights.map((h, i) => (
-                <li key={i}>{h}</li>
-              ))}
-            </ul>
-            {p.images && p.images.length > 0 && (
-              <div className="p-shots">
-                {p.images.map((img) => (
-                  <figure className="shot" key={img.src}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={img.src} alt={img.caption} loading="lazy" />
-                    <figcaption>{img.caption}</figcaption>
-                  </figure>
+        {PROJECTS.slice()
+          .sort((a, b) => a.priority - b.priority)
+          .map((p) => (
+            <article
+              className={`project ${p.priority > 3 ? "print-secondary" : ""}`}
+              key={p.name}
+            >
+              <div className="p-head">
+                <h3 className="p-name">{p.name}</h3>
+                <span className="p-role">{p.role}</span>
+              </div>
+              <div className="p-tags">
+                {p.tags.map((t) => (
+                  <span className="tag" key={t}>
+                    {t}
+                  </span>
                 ))}
               </div>
-            )}
-            {p.note && <p className="p-note">{p.note}</p>}
-            <p className="p-stack">
-              <strong>Stack:</strong> {p.stack.join(" · ")}
-            </p>
-            {p.links.length > 0 && (
-              <div className="p-links">
-                {p.links.map((l) => (
-                  <a
-                    className="p-link"
-                    key={l.href}
-                    href={l.href}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {l.label} ↗
-                  </a>
+              <p className="p-blurb">{p.blurb}</p>
+              <ul className="p-list">
+                {p.highlights.map((h, i) => (
+                  <li key={i}>{h}</li>
                 ))}
-              </div>
-            )}
-          </article>
-        ))}
+              </ul>
+              {p.images && p.images.length > 0 && (
+                <div className="p-shots">
+                  {p.images.map((img) => (
+                    <figure className="shot" key={img.src}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={img.src} alt={img.caption} loading="lazy" />
+                      <figcaption>{img.caption}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              )}
+              {p.note && <p className="p-note">{p.note}</p>}
+              <p className="p-stack">
+                <strong>Stack:</strong> {p.stack.join(" · ")}
+              </p>
+              {p.links.length > 0 && (
+                <div className="p-links">
+                  {p.links.map((l) => (
+                    <a
+                      className="p-link"
+                      key={l.href}
+                      href={l.href}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {l.label} ↗
+                    </a>
+                  ))}
+                </div>
+              )}
+            </article>
+          ))}
       </section>
 
       <section>

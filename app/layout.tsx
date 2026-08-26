@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Jie Sheng — AI Engineer",
   description:
-    "Resume and project portfolio of Jie Sheng, a full-stack and AI engineer building production web apps and LLM/agent systems.",
+    "Resume and portfolio of Jie Sheng, an AI and data engineer building production LLM systems, data platforms, APIs and cloud-delivered decision tools.",
   icons: {
     icon: "/headshot.png",
   },

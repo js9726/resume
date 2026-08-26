@@ -4,13 +4,13 @@
 
 export const PROFILE = {
   name: "Jie Sheng",
-  title: "AI Engineer - LLM systems in production, on data infrastructure I build and operate",
+  title: "AI Engineer | Production LLM Systems, Data Platforms & Cloud Delivery",
   avatar: "/headshot.png",
   location: "Malaysia",
   email: "jiesheng2697@gmail.com",
   github: "https://github.com/js9726",
   summary:
-    "AI engineer who builds production LLM-assisted systems and owns the data infrastructure underneath them. Five years building and operating a multi-channel e-commerce analytics platform - Linnworks -> BigQuery pipelines spanning 7 sales channels, 40,000+ SKUs and 200+ orders per day, gross-profit modelling, and a React/Express operations dashboard on Google Cloud Run - then layering AI on top of it: role-based analysis pipelines, knowledge-grounded reasoning, multimodal vision-to-structured-data extraction, tool integrations, live data connections, and macro / Apps Script / VBA automation. I practise eval-driven development with versioned golden cases, deterministic CI quality gates, and an optional Neon export path for reviewing real analysis rows; live data paths fail closed rather than degrade silently. Civil-engineering trained (UTAR), self-taught into software through Excel VBA macros and e-commerce analytics; comfortable owning the full lifecycle - ingestion, APIs, auth, CI/CD and deployment.",
+    "AI and data engineer with five years of hands-on ownership of production data, analytics and automation systems inside a multi-channel e-commerce business. Designed and operate Linnworks-to-BigQuery pipelines covering 7 sales channels, 40,000+ SKUs and 200+ orders per day, plus versioned APIs and a private operations dashboard on Google Cloud Run. Build LLM-assisted systems with structured context, tool calling, multimodal extraction, deterministic evaluation and fail-closed data controls across Python, TypeScript, Next.js, PostgreSQL and GCP. Civil-engineering trained and commercially accountable, with experience translating operational requirements into secure, documented systems from ingestion through deployment and monitoring.",
 };
 
 export interface ExperienceItem {
@@ -24,18 +24,18 @@ export interface ExperienceItem {
 export const EXPERIENCE: ExperienceItem[] = [
   {
     company: "Walplus",
-    role: "Data & AI Engineering (formal title: E-Commerce Key Account Manager & Data Analyst)",
+    role: "Applied Data & AI Engineering (formal title: E-Commerce Key Account Manager & Data Analyst)",
     period: "Aug 2021 - Present",
     location: "Kuala Lumpur, Malaysia",
     bullets: [
-      "Designed, built and operate the company's analytics platform end-to-end - Linnworks -> Google BigQuery ingestion pipelines feeding a containerised React/Express operations dashboard on Google Cloud Run. Spans 7 sales channels (Amazon, eBay, Wayfair, Etsy, Shopify and Mirakl-based marketplaces including The Range), 40,000+ SKUs and 200+ orders per day. Sole engineer on the system: architecture, deployment and ongoing operation.",
-      "Built the gross-profit model that drives pricing across the marketplace estate, plus automated repricing to target-GP thresholds accounting for marketplace fee, shipping and incident allowances.",
-      "Built FBA replenishment forecasting that converts historical sell-through, current FBA stock, pack size and MOQ into shipment quantities.",
-      "Used Google Vertex AI to support dynamic-pricing decisions based on demand, competitor movement and seasonality.",
-      "Reduced GCP compute cost by scheduling Compute Engine VMs and right-sizing instance/thread capacity; configured AWS Budgets and basic cost controls.",
-      "Used Selenium for browser-driven data collection, including Amazon review research and Malaysian property-listing analysis; built responsive interfaces with MERN and Next.js plus backend services with Django and Flask.",
-      "Automated the reporting layer years before the warehouse existed: Excel VBA and Google Sheets macro / Apps Script tooling that pulled, cleaned and reformatted channel order and stock exports into recurring reports, and drove the pricing, gross-profit and replenishment workbooks - later formalised into the BigQuery pipelines and dashboard above.",
-      "Own marketplace P&L across the channel estate - PPC, pricing and conversion optimisation - the commercial context that informs every model above.",
+      "Expanded a commercial analytics role into end-to-end engineering ownership as the sole human engineer for the company's internal data and decision-support systems.",
+      "Designed, built and operate Linnworks-to-BigQuery ingestion pipelines spanning 7 sales channels, 40,000+ SKUs and 200+ orders per day, with scheduled validation and source-freshness checks.",
+      "Built and deployed a private React/TypeScript and Express operations dashboard with versioned APIs for performance, profitability, storage, incidents, data quality and deterministic CSV exports; responses carry trace IDs, data-through dates, freshness and completeness.",
+      "Owned secure Google Cloud delivery using containerised Cloud Run services, IAP organisation access, dedicated service accounts, Secret Manager references, staged zero-traffic revisions, rollback targets and post-release log/read-back verification.",
+      "Built the gross-profit model and automated target-GP repricing logic across the marketplace estate, accounting for channel fees, shipping and incident allowances.",
+      "Built FBA replenishment forecasting from sell-through, live stock, pack size and MOQ, and used Vertex AI as decision support for pricing signals based on demand, competitor movement and seasonality.",
+      "Translated marketplace, finance, stock, storage, returns and fulfilment questions into reconciled data contracts and operator tools while retaining P&L responsibility for PPC, pricing and conversion; live commercial changes remain human-approved.",
+      "Progressed the reporting stack from Excel VBA and Google Apps Script automation to Python/SQL pipelines and cloud APIs; reduced GCP cost through VM scheduling and right-sizing and configured AWS budget controls.",
     ],
   },
   {
@@ -82,62 +82,63 @@ export const SKILLS: SkillGroup[] = [
   {
     group: "AI / LLM",
     items: [
-      "Role-based AI analysis pipelines",
-      "Knowledge-grounded LLM workflows",
-      "MCP-compatible tool integrations",
-      "Eval-driven development (versioned golden cases + deterministic CI gate)",
-      "Google Vertex AI (dynamic-pricing decision support)",
-      "Prompt caching",
-      "Vision -> structured JSON extraction",
-      "Claude / Gemini / DeepSeek APIs",
-      "Telegram Bot API interfaces",
+      "Agent workflows and tool calling",
+      "Context orchestration (instructions, retrieval, structured inputs, durable handoffs)",
+      "Knowledge-grounded LLM systems",
+      "MCP tool workflows",
+      "Deterministic and golden-case evaluation",
+      "Multimodal vision -> structured JSON",
+      "DeepSeek and Gemini APIs",
+      "Claude Code and Codex subscription workflows",
+      "Human approval gates and fail-closed controls",
     ],
   },
   { group: "Languages", items: ["TypeScript", "Python", "JavaScript", "SQL"] },
   {
-    group: "Frontend",
-    items: ["Next.js (App Router)", "React 19", "Tailwind", "Expo / React Native", "MERN", "SVG data-viz"],
-  },
-  {
     group: "Backend & Data",
     items: [
       "Node / Express",
+      "REST APIs and versioned contracts",
       "PostgreSQL (Prisma, Neon)",
       "Supabase Postgres/Auth/RLS",
       "Google BigQuery",
       "Google Cloud Storage",
-      "REST APIs",
-      "Google Apps Script",
       "Django",
       "Flask",
     ],
   },
   {
-    group: "Spreadsheet & Office Automation",
+    group: "Cloud & Delivery",
     items: [
-      "Google Apps Script (Sheets + Docs)",
-      "Custom menus, triggers & UrlFetchApp API sync",
-      "Google Sheets macros & custom functions",
-      "Excel VBA macros",
-      "AI-integrated spreadsheet systems (Sheets + Apps Script + LLM pipelines)",
+      "Google Cloud Run",
+      "Vercel",
+      "Docker",
+      "GitHub Actions CI/CD",
+      "GCP IAP / service accounts / Secret Manager",
+      "OAuth / NextAuth v5",
+      "Serverless and scheduled workers",
     ],
   },
   {
-    group: "Automation",
-    items: ["ETL pipelines", "GitHub Actions", "Scheduled cron workers"],
+    group: "Reliability & Governance",
+    items: [
+      "Structured logs and trace IDs",
+      "Freshness and completeness monitoring",
+      "CI quality gates",
+      "Staged releases and rollback verification",
+      "Role-based access and secret isolation",
+      "Source provenance and approval boundaries",
+    ],
   },
   {
-    group: "Infra / DevOps",
+    group: "Frontend & Automation",
     items: [
-      "Vercel",
-      "Google Cloud Run",
-      "GCP Compute Engine scheduling + right-sizing",
-      "AWS Budgets + basic cost controls",
-      "Serverless functions",
-      "GitHub Actions CI/CD",
-      "OAuth / NextAuth v5",
-      "Docker",
-      "Selenium web-data collection",
+      "Next.js / React / TypeScript",
+      "Tailwind and responsive data visualisation",
+      "ETL pipelines",
+      "Google Apps Script (Sheets + Docs)",
+      "Excel VBA",
+      "Selenium browser automation",
     ],
   },
 ];
@@ -157,6 +158,7 @@ export interface ProjectImage {
 export interface Project {
   name: string;
   role: string;
+  priority: number;
   stack: string[];
   tags: string[];
   blurb: string;
@@ -171,16 +173,17 @@ export const PROJECTS: Project[] = [
   {
     name: "AI Market Dashboard - Multi-Agent Trading SaaS",
     role: "Solo build - 2026",
+    priority: 1,
     stack: ["Next.js 15.5", "TypeScript", "Python", "Neon Postgres", "Prisma", "Vercel"],
     tags: ["AI / LLM", "Full-stack", "SaaS", "Eval harness"],
     blurb:
       "Private-beta SaaS that turns live market and broker data into AI-generated trade analysis.",
     highlights: [
-      "Built a role-based analysis pipeline combining deterministic data/risk checks with LLM-generated analysis to produce a weighted Conviction Score and daily morning brief.",
+      "Built a role-based analysis pipeline combining deterministic data/risk checks, wiki-grounded context and LLM-generated structured outputs to produce a weighted Conviction Score and daily morning brief.",
       "Added a Neon export path for reviewing real A-list rows plus a deterministic CI gate that scores versioned evaluation results against an 80% quality threshold.",
       "Engineered a Python ingestion pipeline (yfinance, Finviz, market breadth) feeding a Next.js App Router front-end; a Mon-Fri GitHub Actions refresh auto-redeploys to Vercel.",
       "Integrated live brokerage feeds (moomoo OpenD + IBKR bridges) with a fail-closed freshness guard that halts analysis on stale or missing data.",
-      "Implemented NextAuth v5 (Google OAuth) + Prisma + PostgreSQL with role-based access and middleware route protection.",
+      "Persisted briefs, analyses and journal outputs through typed API contracts; implemented NextAuth v5, Prisma and PostgreSQL with role-based access and middleware protection.",
     ],
     note: "Private beta - live walkthrough available on request.",
     links: [
@@ -190,6 +193,7 @@ export const PROJECTS: Project[] = [
   {
     name: "MacroSnap - Photo-to-Macros AI Food Tracker (Telegram Bot + PWA)",
     role: "Solo build - 2026",
+    priority: 4,
     stack: [
       "Next.js (App Router)",
       "TypeScript",
@@ -233,6 +237,7 @@ export const PROJECTS: Project[] = [
   {
     name: "Malaysia SME E-Invoicing Sandbox - Mobile-First Compliance App",
     role: "Solo build - 2026",
+    priority: 5,
     stack: ["TypeScript", "React", "vinext/Next.js", "LHDN MyInvois API design", "Supabase architecture"],
     tags: ["Mobile UX", "Compliance tech", "Full-stack", "SaaS"],
     blurb:
@@ -251,15 +256,16 @@ export const PROJECTS: Project[] = [
   {
     name: "Multi-Channel E-Commerce Operations Dashboard",
     role: "Client work (under NDA) - 2025-2026",
-    stack: ["React", "Express", "Google Cloud Run", "BigQuery"],
-    tags: ["Data", "E-commerce", "Cloud Run"],
+    priority: 2,
+    stack: ["React", "TypeScript", "Express", "Google Cloud Run", "BigQuery"],
+    tags: ["Data platform", "Enterprise delivery", "Cloud Run", "Observability"],
     blurb:
       "Internal operations dashboard aggregating multi-channel sales, gross-profit and replenishment analytics.",
     highlights: [
       "Aggregates marketplace, FBA and dropship channels into a BigQuery warehouse with automated daily ingestion from the order-management system.",
-      "Surfaces channel revenue, gross-profit modelling, AI performance insights and FBA replenishment recommendations.",
-      "Roadmap features: Amazon SP-API listing optimisation and live Buy-Box pricing checks.",
-      "Containerised React + Express app deployed on Google Cloud Run.",
+      "Exposes versioned, read-only APIs for performance, profitability, storage lineage, incidents and data quality with trace IDs, freshness/completeness status and deterministic exports.",
+      "Reconciles source semantics rather than averaging or silently filling missing values, allowing operators to audit calculations back to order and stock evidence.",
+      "Runs as a private containerised Cloud Run service protected by IAP, scoped runtime identities and Secret Manager, released through staged revisions with explicit rollback and live read-back checks.",
     ],
     note: "Production data is NDA-protected - the linked demo runs entirely on synthetic data.",
     links: [
@@ -269,6 +275,7 @@ export const PROJECTS: Project[] = [
   {
     name: "FIFA World Cup 2026 Sweepstake - Invite-Only Pool App",
     role: "Solo build - 2026",
+    priority: 7,
     stack: ["Next.js", "Neon Postgres", "Vercel"],
     tags: ["Full-stack", "Next.js"],
     blurb:
@@ -282,22 +289,25 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    name: "Trading Assistant Skill Suite - Wiki-Grounded AI Agents",
+    name: "Multi-Agent Knowledge & Workflow Control Plane",
     role: "Solo build - 2026",
-    stack: ["Claude Agent SDK", "Python", "TypeScript", "OpenD"],
-    tags: ["AI / LLM", "Agents", "Knowledge systems"],
+    priority: 3,
+    stack: ["Claude Code", "Codex", "Python", "TypeScript", "Git"],
+    tags: ["AI / LLM", "Agent orchestration", "Context engineering", "Governance"],
     blurb:
-      "A curated knowledge base plus global assistant skills that score trades against a maintained trading wiki.",
+      "A shared knowledge and execution layer that lets Claude Code and Codex work from one maintained source without silently overwriting each other.",
     highlights: [
-      "Wiki-grounded trade-analyser skill that loads maintained trading knowledge and scores setups with a Conviction model.",
-      "OpenD broker bridge for live positions and quotes, with structured journaling back to the dashboard.",
-      "Dual-agent design portable across Claude Code and Codex from one authoring source.",
+      "Designed atomic runtime claims, durable task records and handoffs, one-writer/reviewer gates, failure learning and session validation for multi-agent work across repositories.",
+      "Maintains canonical wiki knowledge and shared skill parity across both runtimes, with generated dependency/audit views and validation gates for stale or contradictory context.",
+      "Built wiki-grounded trading workflows that combine maintained doctrine, live OpenD broker data and structured journaling persisted back to the dashboard.",
+      "Uses scheduled workflows and explicit approval boundaries so analysis can automate while broker orders, deployments and publication remain operator-controlled.",
     ],
     links: [],
   },
   {
     name: "Malaysia Auction Property Rental-Yield Screener",
     role: "Personal research tool",
+    priority: 8,
     stack: ["Python", "Selenium", "Web data extraction", "Spreadsheet analysis"],
     tags: ["Automation", "Data", "Property research"],
     blurb:
@@ -313,6 +323,7 @@ export const PROJECTS: Project[] = [
   {
     name: "Trade Journal Pro - AI-Integrated Spreadsheet & Docs Automation",
     role: "Solo build - 2025-2026",
+    priority: 6,
     stack: [
       "Google Apps Script",
       "Google Sheets",
@@ -337,4 +348,4 @@ export const PROJECTS: Project[] = [
   },
 ];
 
-export const LAST_UPDATED = "2026-08-18";
+export const LAST_UPDATED = "2026-08-27";

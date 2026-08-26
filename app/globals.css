@@ -290,8 +290,13 @@ section {
 }
 
 @media print {
+  @page {
+    size: A4;
+    margin: 11mm 13mm;
+  }
   body {
     background: #fff;
+    font-size: 10.5pt;
   }
   .sheet {
     margin: 0;
@@ -299,19 +304,95 @@ section {
     border: none;
     border-radius: 0;
     box-shadow: none;
-    padding: 0 8px;
+    padding: 0;
   }
-  .print-btn {
+  .print-btn,
+  .avatar,
+  .p-shots,
+  .print-secondary,
+  .foot {
     display: none;
+  }
+  .top {
+    gap: 8px;
+  }
+  .id {
+    gap: 0;
+  }
+  .name {
+    font-size: 24px;
+  }
+  .role {
+    font-size: 13px;
+  }
+  .contact {
+    margin-top: 6px;
+    font-size: 10.5px;
+  }
+  section {
+    margin-top: 15px;
+  }
+  .sec-title {
+    margin-bottom: 7px;
+    padding-bottom: 4px;
+    break-after: avoid;
+  }
+  .summary {
+    max-width: none;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+  .skills {
+    grid-template-columns: 120px 1fr;
+    gap: 5px 12px;
+    font-size: 10.5px;
+  }
+  .skills .chips {
+    gap: 4px;
+  }
+  .chip {
+    padding: 1px 5px;
+    font-size: 9.5px;
+  }
+  .project {
+    padding: 9px 0;
+    break-inside: auto;
+  }
+  .project .p-head,
+  .project .p-tags,
+  .project .p-blurb {
+    break-after: avoid;
+  }
+  .p-name {
+    font-size: 12px;
+  }
+  .p-role,
+  .p-note,
+  .p-stack,
+  .p-link {
+    font-size: 9.5px;
+  }
+  .p-blurb,
+  .p-list {
+    font-size: 10px;
+  }
+  .p-list {
+    margin-top: 4px;
+  }
+  .p-list li {
+    margin-bottom: 2px;
+  }
+  .p-tags {
+    margin-top: 4px;
+  }
+  .tag {
+    font-size: 8.5px;
   }
   .p-link {
     background: none;
     border: none;
     padding: 0;
     text-decoration: underline;
-  }
-  .project {
-    break-inside: avoid;
   }
   a {
     color: var(--ink) !important;
