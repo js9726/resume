@@ -24,11 +24,11 @@ export interface ExperienceItem {
 export const EXPERIENCE: ExperienceItem[] = [
   {
     company: "Walplus",
-    role: "Applied Data & AI Engineering (formal title: E-Commerce Key Account Manager & Data Analyst)",
+    role: "E-Commerce Key Account Manager & Data Analyst | Applied Data & AI Engineering",
     period: "Aug 2021 - Present",
     location: "Kuala Lumpur, Malaysia",
     bullets: [
-      "Expanded a commercial analytics role into end-to-end engineering ownership as the sole human engineer for the company's internal data and decision-support systems.",
+      "Combine ongoing e-commerce key-account and commercial-analytics ownership with end-to-end engineering responsibility as the sole human engineer for the company's internal data and decision-support systems.",
       "Designed, built and operate Linnworks-to-BigQuery ingestion pipelines spanning 7 sales channels, 40,000+ SKUs and 200+ orders per day, with scheduled validation and source-freshness checks.",
       "Built and deployed a private React/TypeScript and Express operations dashboard with versioned APIs for performance, profitability, storage, incidents, data quality and deterministic CSV exports; responses carry trace IDs, data-through dates, freshness and completeness.",
       "Owned secure Google Cloud delivery using containerised Cloud Run services, IAP organisation access, dedicated service accounts, Secret Manager references, staged zero-traffic revisions, rollback targets and post-release log/read-back verification.",
@@ -40,7 +40,7 @@ export const EXPERIENCE: ExperienceItem[] = [
   },
   {
     company: "G&P Geotechnics Sdn Bhd",
-    role: "Geotechnical Engineer (prior: Intern)",
+    role: "Geotechnical Engineer",
     period: "Feb 2021 - Aug 2021",
     location: "Malaysia",
     bullets: [
