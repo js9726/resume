@@ -39,7 +39,7 @@ export default function Page() {
       <section>
         <h2 className="sec-title">Experience</h2>
         {EXPERIENCE.map((e) => (
-          <article className="project" key={e.company}>
+          <article className="project" key={`${e.company}-${e.role}-${e.period}`}>
             <div className="p-head">
               <h3 className="p-name">
                 {e.role} · {e.company}
@@ -51,7 +51,16 @@ export default function Page() {
             </div>
             <ul className="p-list">
               {e.bullets.map((b, i) => (
-                <li key={i}>{b}</li>
+                <li
+                  className={
+                    e.printLimit !== undefined && i >= e.printLimit
+                      ? "print-detail"
+                      : undefined
+                  }
+                  key={i}
+                >
+                  {b}
+                </li>
               ))}
             </ul>
           </article>
@@ -76,7 +85,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section>
+      <section className="projects-section">
         <h2 className="sec-title">Selected Projects</h2>
         {PROJECTS.slice()
           .sort((a, b) => a.priority - b.priority)

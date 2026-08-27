@@ -19,6 +19,7 @@ export interface ExperienceItem {
   period: string;
   location?: string;
   bullets: string[];
+  printLimit?: number;
 }
 
 export const EXPERIENCE: ExperienceItem[] = [
@@ -43,9 +44,24 @@ export const EXPERIENCE: ExperienceItem[] = [
     role: "Geotechnical Engineer",
     period: "Feb 2021 - Aug 2021",
     location: "Malaysia",
+    printLimit: 3,
     bullets: [
-      "Strip-raft foundation design for an elevated water tank using SAFE analysis.",
-      "Slope stability analysis (Slope/W) for pushback slope design.",
+      "Designed a strip-raft foundation for an elevated water tank using SAFE and performed pushback-slope stability analysis in GeoStudio Slope/W.",
+      "Participated in subsurface investigations for East Coast Rail Link Section C and interpreted site-investigation data for multiple projects.",
+      "Developed VBA-enabled site-investigation and monitoring spreadsheets to standardise engineering calculations and progress tracking.",
+      "Analysed Mackintosh probe results for reinforced-soil and reinforced-concrete walls and ran sensitivity studies for Class 3 slopes.",
+      "Monitored soil-nail installation and pull-out tests and managed rock excavation, slope strengthening and retaining-wall construction for a luxury residential project.",
+    ],
+  },
+  {
+    company: "G&P Geotechnics Sdn Bhd",
+    role: "Geotechnical Engineering Intern",
+    period: "Oct 2019 - Dec 2019",
+    location: "Malaysia",
+    printLimit: 1,
+    bullets: [
+      "Interpreted subsurface field and laboratory tests and high-strain dynamic pile-load-test results; checked pile eccentricity and overstressed pile groups using engineering spreadsheets and SAFE.",
+      "Used Piglet and GeoStudio Slope/W circular and wedge analyses to review pile loads and slope stability, supporting pile-reinforcement and design revisions.",
     ],
   },
 ];
