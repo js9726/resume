@@ -9,6 +9,7 @@ export const PROFILE = {
   location: "Malaysia",
   email: "jiesheng2697@gmail.com",
   github: "https://github.com/js9726",
+  linkedin: "https://www.linkedin.com/in/jie-sheng-ooi-6886b11a8/",
   summary:
     "AI and data engineer with five years of hands-on ownership of production data, analytics and automation systems inside a multi-channel e-commerce business. Designed and operate Linnworks-to-BigQuery pipelines covering 7 sales channels, 40,000+ SKUs and 200+ orders per day, plus versioned APIs and a private operations dashboard on Google Cloud Run. Build LLM-assisted systems with structured context, tool calling, multimodal extraction, deterministic evaluation and fail-closed data controls across Python, TypeScript, Next.js, PostgreSQL and GCP. Civil-engineering trained and commercially accountable, with experience translating operational requirements into secure, documented systems from ingestion through deployment and monitoring.",
 };
@@ -28,6 +29,7 @@ export const EXPERIENCE: ExperienceItem[] = [
     role: "E-Commerce Key Account Manager & Data Analyst | Applied Data & AI Engineering",
     period: "Aug 2021 - Present",
     location: "Kuala Lumpur, Malaysia",
+    printLimit: 7,
     bullets: [
       "Combine ongoing e-commerce key-account and commercial-analytics ownership with end-to-end engineering responsibility as the sole human engineer for the company's internal data and decision-support systems.",
       "Designed, built and operate Linnworks-to-BigQuery ingestion pipelines spanning 7 sales channels, 40,000+ SKUs and 200+ orders per day, with scheduled validation and source-freshness checks.",

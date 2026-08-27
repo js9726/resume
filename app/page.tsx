@@ -24,6 +24,9 @@ export default function Page() {
               <a href={PROFILE.github} target="_blank" rel="noreferrer">
                 github.com/{PROFILE.github.split("/").pop()}
               </a>
+              <a href={PROFILE.linkedin} target="_blank" rel="noreferrer">
+                linkedin.com/in/jie-sheng-ooi-6886b11a8
+              </a>
               <span>{PROFILE.location}</span>
             </div>
           </div>
