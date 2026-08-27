@@ -74,7 +74,7 @@ export default function Page() {
         <h2 className="sec-title">Skills</h2>
         <div className="skills">
           {SKILLS.map((s) => (
-            <div key={s.group} style={{ display: "contents" }}>
+            <div className="skill-row" key={s.group}>
               <div className="grp">{s.group}</div>
               <div className="chips">
                 {s.items.map((it) => (

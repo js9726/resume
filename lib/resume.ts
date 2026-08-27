@@ -132,6 +132,7 @@ export const SKILLS: SkillGroup[] = [
       "Vercel",
       "Docker",
       "GitHub Actions CI/CD",
+      "AWS budget controls",
       "GCP IAP / service accounts / Secret Manager",
       "OAuth / NextAuth v5",
       "Serverless and scheduled workers",
